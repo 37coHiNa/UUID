@@ -177,4 +177,3 @@ class UUID {
 }
 
 export { UUID as default }
-
