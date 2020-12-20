@@ -1,7 +1,7 @@
 # UUID
 UUID(v4) Generator and Parser for Node.js and Javascript(Web)
 
-##UUID.randomUUID()
+#UUID.randomUUID()
 
 ```
 import UUID from "./UUID.js"
@@ -9,7 +9,7 @@ import UUID from "./UUID.js"
 const uuid = UUID.ramdomUUID()
 ```
 
-##UUID.prototype.toString()
+#UUID.prototype.toString()
 ```
 import UUID from "./UUID.js"
 

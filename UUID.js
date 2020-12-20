@@ -7,7 +7,7 @@ class UUID {
     const src = new Uint8Array( obj )
     const dst = new Uint8Array( this.#data )
 
-		for ( let i = 0; i < dst.length; i++ ) dst[ i ] = src[ i ]
+  	for ( let i = 0; i < dst.length; i++ ) dst[ i ] = src[ i ]
 
   }
 
@@ -66,26 +66,26 @@ class UUID {
     const VARSION = 0x40
     const VARIANT = 0x80
 
-		//Polyfill (unsecured)
-		const isSupported = ( typeof crypto !== "undefined" && typeof crypto.getRandomValues !== "undefined" )
-		if ( ! isSupported ) console.warn( "!!!caution!!! using unsecured polyfill." )
-		const crypto_ =
+  	//Polyfill (unsecured)
+  	const isSupported = ( typeof crypto !== "undefined" && typeof crypto.getRandomValues !== "undefined" )
+  	if ( ! isSupported ) console.warn( "!!!caution!!! using unsecured polyfill." )
+  	const crypto_ =
 
       isSupported 
 
-		  ? crypto
+  	  ? crypto
 
-			: {
+  		: {
 
-			  getRandomValues( uint8 ) {
-			  
-					const uint32 = new Uint32Array( uint8.buffer )
-					for ( let i = 0; i < uint32.length; i++ ) uint32[ i ] = ( Math.random() * 0x100000000 ) >>> 0
-					return uint8
+  		  getRandomValues( uint8 ) {
+  		  
+  				const uint32 = new Uint32Array( uint8.buffer )
+  				for ( let i = 0; i < uint32.length; i++ ) uint32[ i ] = ( Math.random() * 0x100000000 ) >>> 0
+  				return uint8
 
-				}
+  			}
 
-			}
+  		}
 
     for (;;) {
 
