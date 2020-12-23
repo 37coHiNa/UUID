@@ -40,3 +40,10 @@ const uuid = UUID.ramdomUUID()
 console.log( uuid.toString() ) //e.g. B264ABE9-287E-4C6C-9C2C-FDCB55A2338D
 ```
 
+## UUID.prototype.variant
+*readonly*  
+Number 128(0x80).
+
+## UUID.prototype.varsion
+*readonly*  
+Number 64(0x40).
