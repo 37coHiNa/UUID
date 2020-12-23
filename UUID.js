@@ -1,3 +1,8 @@
+//UUID version 4 (RFC 4122)
+
+const VARSION = 0x40
+const VARIANT = 0x80
+
 class UUID {
  
   #data = new ArrayBuffer( 16 )
@@ -17,16 +22,20 @@ class UUID {
   get mostSignificantBits() {
 
      if ( this.#most != null ) return this.#most
-     return ( [ this.#most, this.#least ] = new BigInt64( this.#data ) )[ 0 ]
+     return ( [ this.#most, this.#least ] = new BigInt64Array( this.#data ) )[ 0 ]
 
   }
 
   get leastSignificantBits() {
 
      if ( this.#least != null ) return this.#least
-     return ( [ this.#most, this.#least ] = new BigInt64( this.#data ) )[ 1 ]
+     return ( [ this.#most, this.#least ] = new BigInt64Array( this.#data ) )[ 1 ]
 
   }
+
+  get variant() { return VARIANT }
+
+  get varsion() { return VARSION }
 
   static #HEXOCTETS = Object.freeze( [ ...Array( 256 ) ].map( ( e, i ) => i.toString( 16 ).padStart( 2, "0" ).toUpperCase() ) )
   #stringRepresentation = null
@@ -58,17 +67,10 @@ class UUID {
 
   }
 
-  valueOf() { return this.toString() }
-  
   static #uuidIte = ( function* () {
 
-    //RFC 4122
-    const VARSION = 0x40
-    const VARIANT = 0x80
-
-    //Polyfill (unsecured)
+    //Polyfill
     const isSupported = ( typeof crypto !== "undefined" && typeof crypto.getRandomValues !== "undefined" )
-    if ( ! isSupported ) console.warn( "!!!caution!!! using unsecured polyfill." )
     const crypto_ =
 
       isSupported 
@@ -145,7 +147,7 @@ class UUID {
 
             if ( consume( low ) || consume( up ) ) {
 
-              byte = byte << 4 + val
+              byte = ( byte << 4 ) + val
               break FOUND
 
             }
