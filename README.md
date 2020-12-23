@@ -24,11 +24,11 @@ console.log( uuid instanceof UUID ) //true
 ```
 
 ## UUID.prototype.mostSignificantBits
-readonly
+*readonly*  
 The most significant 64 bits.
 
 ## UUID.prototype.leastSignificantBits
-readonly
+*readonly*  
 The least significant 64 bits.
 
 ## UUID.prototype.toString()
